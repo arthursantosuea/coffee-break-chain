@@ -1,4 +1,4 @@
-var LeafDataStorage = artifacts.require("../contracts/LeafDataStorage.sol");
+var LeafDataStorage = artifacts.require("./LeafDataStorage.sol");
 
 module.exports = function(deployer) {
     deployer.deploy(LeafDataStorage);

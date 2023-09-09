@@ -45,7 +45,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -58,7 +59,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getLengthUserLeafData\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_index\",\"type\":\"uint256\"}],\"name\":\"getUserLeafData\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"className\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"distribution\",\"type\":\"uint256\"}],\"internalType\":\"struct LeafDataStorage.ClassDistribution[]\",\"name\":\"\",\"type\":\"tuple[]\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/LeafDataStorage.sol\":\"LeafDataStorage\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/LeafDataStorage.sol\":{\"keccak256\":\"0x27f28f5d7017c77cd77452b6bc4853ed9bce962ffb3b1c70ed51ee8f790329c1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e3137940257e2420a3874e70a5f03f9d53bfe6c59492633f53e95f8a46bfd85f\",\"dweb:/ipfs/QmT4WNYRhxobj5iFtFfCSX3JLqZKr8fLPkcrJ9scXxHuLr\"]}},\"version\":1}",
@@ -5674,9 +5676,17 @@
     "name": "solc",
     "version": "0.8.21+commit.d9974bed.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "1694286548232": {
+      "events": {},
+      "links": {},
+      "address": "0x6925753B4AD9BAB251868cffc7E93a44897FDD2a",
+      "transactionHash": "0x2b737d10d65facd66ad9684f6e41fe944ca5886b1734e57b3c854e9dca92b18b"
+    }
+  },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2023-09-09T18:23:00.794Z",
+  "updatedAt": "2023-09-09T19:10:34.666Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},
