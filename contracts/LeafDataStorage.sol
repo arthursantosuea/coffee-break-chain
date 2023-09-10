@@ -2,15 +2,11 @@
 pragma solidity >= 0.8.15;
 
 contract LeafDataStorage {
-    struct ClassDistribution {
-        string className;
-        uint256 distribution;
-    }
-
     struct LeafData {
         string plantId;
         string ipfsLink;
-        ClassDistribution[] classDistributions;
+        string[] classNames;
+        uint256[] classDistributions;
         uint date;
     }
 
@@ -18,22 +14,36 @@ contract LeafDataStorage {
     mapping(address => LeafData[]) private userLeafData;
 
     // Definindo os atributos de userLeafData
-    function _setUserLeafData(string memory _plantId, string memory _ipfsLink, 
-                              ClassDistribution[] memory _classDistributions, uint _date) private {
-        userLeafData[msg.sender].push(LeafData({
+    function setUserLeafData(string memory _plantId, string memory _ipfsLink, string[] memory _classNames, 
+                            uint256[] memory _distributions, uint _date) public {        
+        require(_classNames.length == _distributions.length, "Tamanhos diferentes");
+
+        LeafData memory newLeafData = LeafData({
             plantId: _plantId,
             ipfsLink: _ipfsLink,
-            classDistributions: _classDistributions,
+            classNames: _classNames, 
+            classDistributions: _distributions,
             date: _date
-        }));
+        });
+
+        userLeafData[msg.sender].push(newLeafData);
     }
 
     // Retornando os dados salvos pelos respectivos usuários
-    function getUserLeafData(uint _index) public view returns(string memory, string memory, 
-                                                              ClassDistribution[] memory, uint) {
+    function getUserLeafDataFull() public view returns (LeafData[] memory) {
+        return userLeafData[msg.sender];
+    }
+
+    function getUserLeafDataAttributes(uint _index) public view returns(string memory, string memory, 
+                                                                        string[] memory, uint256[] memory, 
+                                                                        uint) {
         LeafData memory _userLeafData = userLeafData[msg.sender][_index];
-        return (_userLeafData.plantId, _userLeafData.ipfsLink, 
-                _userLeafData.classDistributions, _userLeafData.date);
+        return (_userLeafData.plantId, 
+                _userLeafData.ipfsLink, 
+                _userLeafData.classNames,
+                _userLeafData.classDistributions, 
+                _userLeafData.date
+        );
     }
 
     // Retornando a quantidade total de submissões feita por um usuário
