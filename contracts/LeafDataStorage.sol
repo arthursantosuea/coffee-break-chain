@@ -5,8 +5,7 @@ contract LeafDataStorage {
     struct LeafData {
         string plantId;
         string ipfsLink;
-        string[] classNames;
-        uint256[] classDistributions;
+        string classificationData;
         uint date;
     }
 
@@ -14,15 +13,12 @@ contract LeafDataStorage {
     mapping(address => LeafData[]) private userLeafData;
 
     // Definindo os atributos de userLeafData
-    function setUserLeafData(string memory _plantId, string memory _ipfsLink, string[] memory _classNames, 
-                            uint256[] memory _distributions, uint _date) public {        
-        require(_classNames.length == _distributions.length, "Tamanhos diferentes");
-
+    function setUserLeafData(string memory _plantId, string memory _ipfsLink, 
+                             string memory _classificationData, uint _date) public {        
         LeafData memory newLeafData = LeafData({
             plantId: _plantId,
             ipfsLink: _ipfsLink,
-            classNames: _classNames, 
-            classDistributions: _distributions,
+            classificationData: _classificationData,
             date: _date
         });
 
@@ -32,22 +28,5 @@ contract LeafDataStorage {
     // Retornando os dados salvos pelos respectivos usuários
     function getUserLeafDataFull() public view returns (LeafData[] memory) {
         return userLeafData[msg.sender];
-    }
-
-    function getUserLeafDataAttributes(uint _index) public view returns(string memory, string memory, 
-                                                                        string[] memory, uint256[] memory, 
-                                                                        uint) {
-        LeafData memory _userLeafData = userLeafData[msg.sender][_index];
-        return (_userLeafData.plantId, 
-                _userLeafData.ipfsLink, 
-                _userLeafData.classNames,
-                _userLeafData.classDistributions, 
-                _userLeafData.date
-        );
-    }
-
-    // Retornando a quantidade total de submissões feita por um usuário
-    function getLengthUserLeafData() public view returns(uint) {
-        return userLeafData[msg.sender].length;
     }
 }
